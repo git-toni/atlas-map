@@ -1,0 +1,57 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+      "airbnb",
+      "prettier",
+      "prettier/react",
+      "prettier/flowtype",
+      "plugin:flowtype/recommended",
+      "plugin:fp/recommended"
+    ],
+    "plugins": [
+      "chai-friendly",
+      "prettier",
+      "flowtype",
+      "fp"
+    ],
+    "env": {
+      "jest": true,
+      "browser": true,
+      "node": true
+    },
+    "rules": {
+      "no-unused-expressions": 0,
+      "chai-friendly/no-unused-expressions": [2, {"allowTaggedTemplates": true}],
+      "prettier/prettier": [
+        "error",
+        {
+          "bracketSpacing": true,
+          "tabWidth": 2,
+          "trailingComma": "all"
+        }
+      ],
+      "import/order": ["error", {
+        "groups": [["builtin", "external"], ["internal", "parent", "sibling", "index"]]
+      }],
+      "import/no-extraneous-dependencies": ["error", {
+        "devDependencies": ["etc/**", "stories/**", "**/__mocks__/*.js", "**/__tests__/*.spec.js", "**/__tests__/*.test.js"]
+      }],
+      "fp/no-class": "off",
+      "fp/no-mutation": "off", 
+      "fp/no-nil": "off",
+      "fp/no-this": "off", 
+      "fp/no-unused-expression": "off", 
+      "jsx-a11y/anchor-is-valid": "off", 
+      "react/default-props-match-prop-types": "off", 
+      "react/jsx-filename-extension": ["error", { "extensions": [".js"] }], 
+      "react/prefer-stateless-function": [2, { "ignorePureComponents": true}],
+      "react/require-default-props": "off", 
+      "import/prefer-default-export": "off"
+    },
+    "settings": {
+      "import/resolver": {
+        "babel-module": {}
+      }
+    }
+  }
+  

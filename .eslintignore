@@ -1,0 +1,9 @@
+.tmp
+coverage
+dist
+dist-storybook
+flow-typed
+public/lib
+types
+**/node_modules/*
+.cache/*
