@@ -4,9 +4,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { injectGlobal } from "styled-components";
 
-import { firebaseApp } from "./environments/firebase";
+import { DataStateProvider, withData } from "./context/dataProvider";
 
-const App = () => <div>Hola Aapp</div>;
+const AppWithData = withData(() => <div>Hello App</div>);
+
+const App = () => (
+  <DataStateProvider>
+    <AppWithData />
+  </DataStateProvider>
+);
 
 (() => {
   const root = document.createElement("div");
