@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const path = require("path");
 
 const babelOptions = {
@@ -24,5 +25,5 @@ module.exports = {
       },
     ],
     exclude: /node_modules/,
-  },
+  }
 };

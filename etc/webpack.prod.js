@@ -1,8 +1,19 @@
 const path = require("path");
+const webpack = require("webpack");
+const dotenv = require('dotenv');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const common = require("./webpack.common.js");
+
+// call dotenv and it will return an Object with a parsed key 
+const env = dotenv.config().parsed;
+
+// reduce it to a nice object, the same as before
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
   entry: [path.resolve(__dirname, "../src/index.js")],
@@ -38,5 +49,6 @@ module.exports = {
         to: path.resolve(__dirname, "../dist/static"),
       },
     ]),
+    new webpack.DefinePlugin(envKeys)
   ],
 };

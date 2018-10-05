@@ -50,6 +50,7 @@
     "babel-plugin-styled-components": "^1.5.1",
     "babel-preset-airbnb": "^2.4.0",
     "copy-webpack-plugin": "^4.5.2",
+    "dotenv": "^6.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "npm:enzyme-react-adapter-future",
     "enzyme-to-json": "^3.3.4",
