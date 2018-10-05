@@ -19,7 +19,9 @@ import App from "./App";
       margin: 0px;
       padding: 0px;
       box-sizing: border-box;
-      font-family: "Roboto", sans-serif;
+      font-family: "Arial", sans-serif;
+      color: #152935;
+      font-size: 16px;
     }
 
     html, body, #root {

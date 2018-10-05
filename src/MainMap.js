@@ -2,7 +2,6 @@ import * as React from "react";
 import styled from "styled-components";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 
-import MainPanel from "../../MainPanel";
 // mapboxgl.accessToken =
 //  "pk.eyJ1IjoidG9uaXUiLCJhIjoiY2o3bjZ5bmRuMnhpYjJxbWoxbGIwMWk3aiJ9.flgQgH61YWCoJD6Vkwk39g";
 // let map = new mapboxgl.Map({
@@ -10,17 +9,6 @@ import MainPanel from "../../MainPanel";
 //  style: "mapbox://styles/mapbox/streets-v10",
 // });
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const PanelContainer = styled.div`
-  height: auto;
-  //height: 2em;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-`;
 const MapContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -47,14 +35,7 @@ class MainMap extends React.Component {
     // });
   }
   render() {
-    return (
-      <Container>
-        <MapContainer id="SupaMap" />;
-        <PanelContainer>
-          <MainPanel />
-        </PanelContainer>
-      </Container>
-    );
+    return <MapContainer id="SupaMap" />;
   }
 }
 

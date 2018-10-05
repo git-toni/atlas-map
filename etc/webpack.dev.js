@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const dotenv = require('dotenv');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackIncludeAssetsPlugin = require("html-webpack-include-assets-plugin");
 
 const common = require("./webpack.common.js");
 
@@ -35,6 +36,7 @@ module.exports = {
       title: "Atlas page",
       meta: { viewport: "width=device-width, initial-scale=1.0" },
     }),
+    new HtmlWebpackIncludeAssetsPlugin({ assets: [], append: true }),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, "../src/static"),
