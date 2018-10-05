@@ -1,7 +1,7 @@
 import React from "react";
 
-import { firebaseApp } from "./../environments/firebase";
-import { ArticleService } from "./../services";
+import { firebaseApp } from "../../environments";
+import { ArticleService } from "../../services";
 
 const initialState = {
   articles: {},
