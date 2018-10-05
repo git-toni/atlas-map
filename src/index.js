@@ -4,15 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { injectGlobal } from "styled-components";
 
-import { DataStateProvider, withData } from "./context/dataProvider";
-
-const AppWithData = withData(() => <div>Hello App</div>);
-
-const App = () => (
-  <DataStateProvider>
-    <AppWithData />
-  </DataStateProvider>
-);
+import App from "./App";
 
 (() => {
   const root = document.createElement("div");

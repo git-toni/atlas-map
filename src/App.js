@@ -1,9 +1,13 @@
 import * as React from "react";
 import { Button } from "carbon-components-react";
 
+import { Root } from "./scenes";
+import { DataStateProvider } from "./context";
+
 const App = () => (
-  <div>
-    <Button>Hello world</Button>
-  </div>
+  <DataStateProvider>
+    <Root />
+  </DataStateProvider>
 );
+
 export default App;

@@ -1,4 +1,4 @@
-import { firebaseApp } from "../../environments/firebase";
+import { firebaseApp } from "../../environments/firebase/firebase";
 
 class ArticleService {
   constructor() {
