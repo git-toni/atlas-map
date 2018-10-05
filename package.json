@@ -11,7 +11,7 @@
     "lint:fix": "eslint --fix .",
     "lint": "eslint .",
     "start": "yarn webpack:dev",
-    "test-ci": "yarn flow:check && yarn lint && yarn test --coverage",
+    "test-ci": "yarn lint && yarn test --coverage",
     "test": "jest",
     "webpack:dev": "webpack-dev-server --config etc/webpack.dev.js --mode development --inline --hot",
     "webpack": "webpack --config etc/webpack.build.js --mode production"
@@ -19,6 +19,9 @@
   "author": "Toni U.",
   "dependencies": {
     "axios": "^0.18.0",
+    "carbon-components": "^9.26.1",
+    "carbon-components-react": "^6.38.1",
+    "carbon-icons": "^7.0.7",
     "date-fns": "2.0.0-alpha.7",
     "fs-extra": "^6.0.1",
     "idx": "^2.3.0",

@@ -3,8 +3,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { injectGlobal } from "styled-components";
-
-const App = () => <div>Hola Aapp</div>;
+import App from "./App";
 
 (() => {
   const root = document.createElement("div");
