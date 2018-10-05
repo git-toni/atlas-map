@@ -3,7 +3,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { injectGlobal } from "styled-components";
-import App from "./App";
+
+import { firebaseApp } from "./environments/firebase";
+
+const App = () => <div>Hola Aapp</div>;
 
 (() => {
   const root = document.createElement("div");

@@ -23,6 +23,7 @@
     "carbon-components-react": "^6.38.1",
     "carbon-icons": "^7.0.7",
     "date-fns": "2.0.0-alpha.7",
+    "firebase": "^5.5.3",
     "fs-extra": "^6.0.1",
     "idx": "^2.3.0",
     "ramda": "^0.25.0",
