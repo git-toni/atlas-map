@@ -36,6 +36,7 @@
       "import/no-extraneous-dependencies": ["error", {
         "devDependencies": ["etc/**", "stories/**", "**/__mocks__/*.js", "**/__tests__/*.spec.js", "**/__tests__/*.test.js"]
       }],
+      "react/prop-types": "off",
       "fp/no-class": "off",
       "fp/no-mutation": "off", 
       "fp/no-nil": "off",
