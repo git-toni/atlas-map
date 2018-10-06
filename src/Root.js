@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
-import Home from "./Home";
 import Discover from "./Discover";
 import Routing from "./Routing";
 import Map from "./Map";
@@ -10,7 +9,7 @@ import Metro from "./Metro";
 
 const Root = () => (
   <Switch>
-    <Route exact path="/" component={Home} />
+    <Redirect exact from="/" to="/map" />
     <Route path="/discover" component={Discover} />
     <Route path="/map" component={Map} />
     <Route path="/routes" component={Routing} />

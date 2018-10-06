@@ -14,7 +14,7 @@
     "test-ci": "yarn lint && yarn test --coverage",
     "test": "jest",
     "webpack:dev": "webpack-dev-server --config etc/webpack.dev.js --mode development --inline --hot",
-    "webpack": "webpack --config etc/webpack.build.js --mode production"
+    "webpack": "webpack --config etc/webpack.prod.js --mode production"
   },
   "author": "Toni U.",
   "dependencies": {
