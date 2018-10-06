@@ -75,15 +75,21 @@ const Line = styled.div`
   }
 `;
 
-const Info = styled.div`
+const InfoWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   flex: 1;
   flex-grow: grow;
 `;
 
+const InfoSection = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 const HighlightLine = () => (
   <Wrapper>
+
     <LineWrapper>
       <LineSection className="line-section">
         <div className="info-time">
@@ -92,6 +98,7 @@ const HighlightLine = () => (
         </div>
         <Line className="rail-station" />
       </LineSection>
+
       <LineSection className="line-section">
         <div className="info-time">
           <h6>6:04 AM</h6>
@@ -99,6 +106,7 @@ const HighlightLine = () => (
         </div>
         <Line className="rail-station" />
       </LineSection>
+      
       <LineSection className="line-section">
         <div className="info-time">
           <h6>6:07 AM</h6>
@@ -106,6 +114,7 @@ const HighlightLine = () => (
         </div>
         <Line className="rail-station" />
       </LineSection>
+      
       <LineSection className="line-section">
         <div className="info-time">
           <h6>6:09 AM</h6>
@@ -114,7 +123,23 @@ const HighlightLine = () => (
         <Line className="rail-station" />
       </LineSection>
     </LineWrapper>
-    <Info />
+
+    <InfoWrapper>
+      <InfoSection>
+        <h2>Hospital de Bellvitge</h2>
+      </InfoSection>
+      <InfoSection>
+        <h2>Bellvitge</h2>
+      </InfoSection>
+      <InfoSection>
+        <h2>L’Hospitalet Av. Carrile</h2>
+      </InfoSection>
+      <InfoSection>
+        <h2>Rambla Just Oliveras</h2>
+      </InfoSection>
+    </InfoWrapper>
+
+
   </Wrapper>
 );
 
