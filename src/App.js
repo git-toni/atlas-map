@@ -11,22 +11,28 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 100%;
+  width: 100vw;
 `;
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 100%;
+  //height: 100%;
+  height: auto;
 `;
 const HeaderContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 3em;
+  width: 100%;
   z-index: 99;
 `;
 const SidePanelContainer = styled.div`
-  min-height: 100%;
-  position: absolute;
-  top: 0;
+  height: 100%;
+  position: fixed;
+  top: 3em;
   bottom: 0;
   left: 0;
   z-index: 99;
@@ -42,7 +48,7 @@ class App extends React.Component {
     }, 4500);
     this.state = {
       sidebarToggled: true,
-      animation: true,
+      animation: false,
     };
   }
 
