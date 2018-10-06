@@ -98,7 +98,10 @@ class SelectService extends React.Component {
         <WrapperService className={this.state.open ? "active" : ""}>
           <SquareService
             className={servicesActives.metro ? "service-active" : ""}
-            onClick={() => this.activeService("metro")}
+            onClick={() => {
+              this.activeService("metro");
+              this.props.history.push("metro");
+            }}
           >
             <img src="src/static/metro-logo.png" />
             <p>Metro</p>

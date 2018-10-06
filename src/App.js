@@ -48,7 +48,7 @@ class App extends React.Component {
     }, 4500);
     this.state = {
       sidebarToggled: true,
-      animation: false,
+      animation: true,
     };
   }
 
