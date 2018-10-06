@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   padding: 10px 15px;
 
   article {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 `;
 
