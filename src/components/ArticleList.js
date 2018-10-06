@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import * as R from "ramda";
 
 import ArticleCard from "./ArticleCard";
 
@@ -12,11 +13,12 @@ const Wrapper = styled.div`
   }
 `;
 
+/* eslint-disable */
 const ArticleList = ({ articles }) => {
   const articlesCards = Object.keys(articles).map(key => (
     <ArticleCard key={key} article={articles[key]} />
   ));
 
-  return <Wrapper>{articlesCards}</Wrapper>;
+  return <Wrapper>{R.reverse(articlesCards)}</Wrapper>;
 };
 export default ArticleList;
