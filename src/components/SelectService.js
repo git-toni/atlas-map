@@ -139,21 +139,36 @@ class SelectService extends React.Component {
           </SquareService>
           <SquareService
             className={servicesActives.tram ? "service-active" : ""}
-            onClick={() => this.activeService("tram")}
+            onClick={() => {
+              this.activeService("tram");
+              if (this.props.history.pathname !== "/map") {
+                this.props.history.push("map");
+              }
+              }}
           >
             <img src="src/static/tram-logo.png" />
             <p>TRAM</p>
           </SquareService>
           <SquareService
             className={servicesActives.maps ? "service-active" : ""}
-            onClick={() => this.activeService("maps")}
+            onClick={() => {
+              this.activeService("maps");
+              if (this.props.history.pathname !== "/map") {
+                this.props.history.push("map");
+              }
+            }}
           >
             <img src="src/static/mapa-logo.png" />
             <p>Mapes</p>
           </SquareService>
           <SquareService
             className={servicesActives.events ? "service-active" : ""}
-            onClick={() => this.activeService("events")}
+            onClick={() => {
+              this.activeService("events");
+              if (this.props.history.pathname !== "/map") {
+                this.props.history.push("map");
+              }
+            }}
           >
             <img src="src/static/events-logo.png" />
             <p>Events</p>

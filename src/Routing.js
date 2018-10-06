@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
+import MapRouting from "./MapRouting";
 
 const PanelContainer = styled.div`
   margin-top: 48px;
@@ -87,6 +88,7 @@ export default class Routing extends React.Component {
         lng: 0,
       },
       profile: "walking",
+      waypoints: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handlerSearchInput = this.handlerSearchInput.bind(this);
@@ -110,12 +112,6 @@ export default class Routing extends React.Component {
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: value }, (results, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
-        console.log(
-          "lat",
-          results[0].geometry.location.lat(),
-          "lng",
-          results[0].geometry.location.lng(),
-        );
         this.setState({
           [toOrFrom]: {
             lat: results[0].geometry.location.lat(),
@@ -127,7 +123,6 @@ export default class Routing extends React.Component {
   }
 
   handleSelect(e) {
-    console.log(e.target.value);
     this.setState({
       profile: e.target.value,
     });
@@ -142,7 +137,9 @@ export default class Routing extends React.Component {
         }?access_token=pk.eyJ1IjoiamFsYmVydHNyIiwiYSI6ImNqbXRhNXdzeTJjazQzdm9laWlzcm94eHQifQ.y9QmSd0MurGeocOHEk0eZA`,
       )
       .then(data => {
-        console.log("pintame esta", data);
+        const parsedWayPoint1 = data.data.waypoints[0].location.reverse();
+        const parsedWayPoint2 = data.data.waypoints[1].location.reverse();
+        this.setState({ waypoints: [parsedWayPoint1, parsedWayPoint2] });
       });
   }
 
@@ -177,9 +174,12 @@ export default class Routing extends React.Component {
             </select>
           </div>
           <div className="button-container">
-            <button className="button" onClick={this.fetchRouting}>Calcula la ruta</button>
+            <button className="button" onClick={this.fetchRouting}>
+              Calcula la ruta
+            </button>
           </div>
         </PanelContainer>
+        <MapRouting waypoints={this.state.waypoints} />
       </React.Fragment>
     );
   }
