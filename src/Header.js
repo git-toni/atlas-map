@@ -17,7 +17,6 @@ const MainTitle = styled.span`
   font-size: 18px;
 `;
 const Header = ({ toggleSidebar }) => {
-  console.log("");
   return (
     <HeaderContainer>
       <FaBars onClick={toggleSidebar} />

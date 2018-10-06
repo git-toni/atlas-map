@@ -2,7 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 
-import MainPanel from "./MainPanel";
+import SelectService from "./components/SelectService";
+
 // mapboxgl.accessToken =
 //  "pk.eyJ1IjoidG9uaXUiLCJhIjoiY2o3bjZ5bmRuMnhpYjJxbWoxbGIwMWk3aiJ9.flgQgH61YWCoJD6Vkwk39g";
 // let map = new mapboxgl.Map({
@@ -21,11 +22,13 @@ const PanelContainer = styled.div`
   bottom: 0;
   width: 100%;
 `;
+
 const MapContainer = styled.div`
   width: 100%;
   height: 100%;
   background: lightgreen;
 `;
+
 class MainMap extends React.Component {
   componentDidMount() {
     console.log("LOAD MAPBOX HERE");
@@ -46,12 +49,17 @@ class MainMap extends React.Component {
     //  });
     // });
   }
+
+  activeService = (service) => {
+    console.log("Active service:", service); // context?
+  }
+
   render() {
     return (
       <Container>
-        <MapContainer id="SupaMap" />;
+        <MapContainer id="SupaMap" />
         <PanelContainer>
-          <MainPanel />
+          <SelectService activeService={this.activeService}/>
         </PanelContainer>
       </Container>
     );
