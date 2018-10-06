@@ -5,6 +5,7 @@ const Card = styled.article`
   display: flex;
   flex-direction: column;
   box-shadow: 1px 4px 10px 0px rgba(0,0,0,0.19);
+  cursor: pointer;
 
   img {
     width: 100%;

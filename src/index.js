@@ -10,6 +10,17 @@ import App from "./App";
   const root = document.createElement("div");
   root.setAttribute("id", "root");
 
+  const slickCss = document.createElement("link");
+  slickCss.setAttribute("rel", "stylesheet");
+  slickCss.setAttribute("type", "text/css");
+  slickCss.setAttribute("charset", "UTF-8");
+  slickCss.setAttribute("href", "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
+
+  const slickTheme = document.createElement("link");
+  slickTheme.setAttribute("rel", "stylesheet");
+  slickTheme.setAttribute("type", "text/css");
+  slickTheme.setAttribute("href", "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
+
   if (!document.body) {
     throw new Error("No browser?"); //eslint-disable-line
   }
@@ -29,6 +40,8 @@ import App from "./App";
     }
   `;
 
+  document.head.appendChild(slickCss);
+  document.head.appendChild(slickTheme);
   document.body.appendChild(root);
 
   const id = document.getElementById("root");

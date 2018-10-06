@@ -1,13 +1,19 @@
 import React from "react";
+import styled from "styled-components";
 
 import { withData } from "./context";
+import SimpleSlider from "./components/SimpleSlider";
 import ArticleList from "./components/ArticleList";
 
+const Wrapper = styled.div`
+  background-color: #f0f0f0;
+`;
+
 const DiscoverScene = ({ data }) => (
-  <div>
-    <h1>Hello Discover</h1>
-    <ArticleList articles={data.articles} />
-  </div>
+  <Wrapper>
+    <SimpleSlider />
+    <ArticleList articles={data.articles}/>
+  </Wrapper>
 );
 
 export default withData(DiscoverScene);
