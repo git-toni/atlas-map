@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { FiNavigation, FiStar, FiInfo, FiSettings, FiMap, FiMapPin } from "react-icons/fi";
+import { withRouter } from "react-router-dom";
 
 const SideContainer = styled.div`
   display: flex;
@@ -34,21 +35,23 @@ const MenuItem = ({ onClick, isSelected, icon, label }) => (
     <MenuItemLabel>{label}</MenuItemLabel>
   </MenuItemContainer>
 );
-const handleMenuSelect = path => () => {
-  console.log("navigate to ", path);
-};
-const SidePanel = () => {
-  console.log("");
-  return (
-    <SideContainer>
-      <MenuItem onClick={handleMenuSelect("routes")} icon={<FiNavigation />} label="Rutes" />
-      <MenuItem onClick={handleMenuSelect("maps")} isSelected icon={<FiMap />} label="Mapes" />
-      <MenuItem onClick={handleMenuSelect("discover")} icon={<FiStar />} label="Descobrir" />
-      <MenuItem onClick={() => {}} icon={<FiMapPin />} label="Punts d'interès" />
-      <MenuItem onClick={() => {}} icon={<FiInfo />} label="Informació útil" />
-      <MenuItem onClick={() => {}} icon={<FiSettings />} label="Configuració" />
-    </SideContainer>
-  );
-};
 
-export default SidePanel;
+/* eslint-disable fp/no-mutating-methods */
+/* eslint-disable react/prefer-stateless-function */
+class SidePanel extends React.Component {
+  render() {
+    const { history } = this.props;
+    return (
+      <SideContainer>
+        <MenuItem onClick={() => history.push("routes")} icon={<FiNavigation />} label="Rutes" />
+        <MenuItem onClick={() => history.push("map")} isSelected icon={<FiMap />} label="Mapes" />
+        <MenuItem onClick={() => history.push("discover")} icon={<FiStar />} label="Descobrir" />
+        <MenuItem onClick={() => history.push("")} icon={<FiMapPin />} label="Punts d'interès" />
+        <MenuItem onClick={() => history.push("")} icon={<FiInfo />} label="Informació útil" />
+        <MenuItem onClick={() => history.push("/")} icon={<FiSettings />} label="Configuració" />
+      </SideContainer>
+    );
+  }
+}
+
+export default withRouter(SidePanel);

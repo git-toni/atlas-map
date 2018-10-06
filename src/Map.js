@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 
-import MainPanel from "../../MainPanel";
+import MainPanel from "./MainPanel";
 // mapboxgl.accessToken =
 //  "pk.eyJ1IjoidG9uaXUiLCJhIjoiY2o3bjZ5bmRuMnhpYjJxbWoxbGIwMWk3aiJ9.flgQgH61YWCoJD6Vkwk39g";
 // let map = new mapboxgl.Map({

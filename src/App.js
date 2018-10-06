@@ -1,8 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
+import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./Header";
 import SidePanel from "./SidePanel";
-import { Root } from "./scenes";
+import Root from "./Root";
 import { DataStateProvider } from "./context";
 
 const Layout = styled.div`
@@ -15,13 +16,11 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  height: 100%;
 `;
 const HeaderContainer = styled.div`
   height: 3em;
   z-index: 99;
-`;
-const MapContainer = styled.div`
-  height: 100vh;
 `;
 const SidePanelContainer = styled.div`
   height: 100%;
@@ -53,17 +52,19 @@ class App extends React.Component {
   };
   render() {
     return (
-      <Layout>
-        <HeaderContainer>
-          <Header toggleSidebar={this.toggleSidebar} />
-        </HeaderContainer>
-        <Content>
-          {this.renderSidePanel()}
-          <DataStateProvider>
-            <Root />
-          </DataStateProvider>
-        </Content>
-      </Layout>
+      <DataStateProvider>
+        <Router>
+          <Layout>
+            <HeaderContainer>
+              <Header toggleSidebar={this.toggleSidebar} />
+            </HeaderContainer>
+            <Content>
+              {this.renderSidePanel()}
+              <Root />
+            </Content>
+          </Layout>
+        </Router>
+      </DataStateProvider>
     );
   }
 }
