@@ -53,7 +53,7 @@ class SidePanel extends React.Component {
         <MenuItem onClick={() => this.pushNavigation("routes")} icon={<FiNavigation />} label="Rutes" />
         <MenuItem onClick={() => this.pushNavigation("map")} isSelected icon={<FiMap />} label="Mapes" />
         <MenuItem onClick={() => this.pushNavigation("discover")} icon={<FiStar />} label="Descobrir" />
-        <MenuItem onClick={() => this.pushNavigation("")} icon={<FiMapPin />} label="Punts d'interès" />
+        <MenuItem onClick={() => this.pushNavigation("map")} icon={<FiMapPin />} label="Punts d'interès" />
         <MenuItem onClick={() => this.pushNavigation("")} icon={<FiInfo />} label="Informació útil" />
         <MenuItem onClick={() => this.pushNavigation("/")} icon={<FiSettings />} label="Configuració" />
       </SideContainer>
