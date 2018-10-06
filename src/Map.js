@@ -22,12 +22,10 @@ const PanelContainer = styled.div`
 const MapContainer = styled.div`
   width: 100%;
   height: 100%;
-  background: lightgreen;
 `;
 
 class MainMap extends React.Component {
   componentDidMount() {
-    console.log("LOAD MAPBOX HERE");
     mapboxgl.accessToken =
       "pk.eyJ1IjoiamFsYmVydHNyIiwiYSI6ImNqbXRhNXdzeTJjazQzdm9laWlzcm94eHQifQ.y9QmSd0MurGeocOHEk0eZA";
     this.map = new mapboxgl.Map({

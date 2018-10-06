@@ -39,23 +39,54 @@ const MenuItem = ({ onClick, isSelected, icon, label }) => (
 /* eslint-disable fp/no-mutating-methods */
 /* eslint-disable react/prefer-stateless-function */
 class SidePanel extends React.Component {
-
-  pushNavigation = (path) => {
+  pushNavigation = path => {
     const { history, toggleSidebar } = this.props;
 
     history.push(path);
     toggleSidebar();
-  }
+  };
 
   render() {
+    const {
+      location: { pathname },
+    } = this.props;
     return (
       <SideContainer>
-        <MenuItem onClick={() => this.pushNavigation("routes")} icon={<FiNavigation />} label="Rutes" />
-        <MenuItem onClick={() => this.pushNavigation("map")} isSelected icon={<FiMap />} label="Mapes" />
-        <MenuItem onClick={() => this.pushNavigation("discover")} icon={<FiStar />} label="Descobrir" />
-        <MenuItem onClick={() => this.pushNavigation("map")} icon={<FiMapPin />} label="Punts d'interès" />
-        <MenuItem onClick={() => this.pushNavigation("")} icon={<FiInfo />} label="Informació útil" />
-        <MenuItem onClick={() => this.pushNavigation("/")} icon={<FiSettings />} label="Configuració" />
+        <MenuItem
+          onClick={() => this.pushNavigation("routes")}
+          isSelected={pathname.includes("routes")}
+          icon={<FiNavigation />}
+          label="Rutes"
+        />
+        <MenuItem
+          onClick={() => this.pushNavigation("map")}
+          isSelected={pathname.includes("map")}
+          icon={<FiMap />}
+          label="Mapes"
+        />
+        <MenuItem
+          onClick={() => this.pushNavigation("discover")}
+          isSelected={pathname.includes("discover")}
+          icon={<FiStar />}
+          label="Descobrir"
+        />
+        <MenuItem
+          onClick={() => {}}
+          isSelected={pathname.includes("interest")}
+          icon={<FiMapPin />}
+          label="Punts d'interès"
+        />
+        <MenuItem
+          onClick={() => {}}
+          isSelected={pathname.includes("info")}
+          icon={<FiInfo />}
+          label="Informació útil"
+        />
+        <MenuItem
+          onClick={() => this.pushNavigation("/")}
+          icon={<FiSettings />}
+          label="Configuració"
+        />
       </SideContainer>
     );
   }
