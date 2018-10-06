@@ -5,6 +5,7 @@ import Header from "./Header";
 import SidePanel from "./SidePanel";
 import Root from "./Root";
 import { DataStateProvider } from "./context";
+import Animation from "./Animation";
 
 const Layout = styled.div`
   display: flex;
@@ -33,9 +34,16 @@ const SidePanelContainer = styled.div`
   box-shadow: 3px 0px 12px #787878;
 `;
 class App extends React.Component {
-  state = {
-    sidebarToggled: true,
-  };
+  constructor() {
+    super();
+    this.timerAnimation = setTimeout(() => {
+      this.setState({ animation: false });
+    }, 4500);
+    this.state = {
+      sidebarToggled: true,
+      animation: true,
+    };
+  }
 
   toggleSidebar = () => this.setState(prev => ({ ...prev, sidebarToggled: !prev.sidebarToggled }));
 
@@ -50,8 +58,11 @@ class App extends React.Component {
     }
     return null;
   };
+
   render() {
-    return (
+    return this.state.animation ? (
+      <Animation />
+    ) : (
       <DataStateProvider>
         <Router>
           <Layout>
