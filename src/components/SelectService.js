@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 
 const Wrapper = styled.div`
@@ -102,43 +103,66 @@ class SelectService extends React.Component {
     return (
       <Wrapper>
         <div onClick={this.toggle}>
-          {this.state.open ? (
-            <FiChevronDown />
-          ) : (
-            <FiChevronUp />
-          )}
+          {this.state.open ? <FiChevronDown /> : <FiChevronUp />}
           <ToggleButton />
         </div>
         <WrapperService className={this.state.open ? "active" : ""}>
-          <SquareService className={servicesActives["metro"] ? "service-active" : ""} onClick={() => this.activeService("metro")}>
+          <SquareService
+            className={servicesActives.metro ? "service-active" : ""}
+            onClick={() => this.activeService("metro")}
+          >
             <img src="src/static/metro-logo.png" />
             <p>Metro</p>
           </SquareService>
-          <SquareService className={servicesActives["fgc"] ? "service-active" : ""} onClick={() => this.activeService("fgc")}>
+          <SquareService
+            className={servicesActives.fgc ? "service-active" : ""}
+            onClick={() => this.activeService("fgc")}
+          >
             <img src="src/static/fgc-logo.png" />
             <p>FGC</p>
           </SquareService>
-          <SquareService className={servicesActives["rodalies"] ? "service-active" : ""} onClick={() => this.activeService("rodalies")}>
+          <SquareService
+            className={servicesActives.rodalies ? "service-active" : ""}
+            onClick={() => this.activeService("rodalies")}
+          >
             <img src="src/static/renfe-logo.png" />
             <p>Rodalies</p>
           </SquareService>
-          <SquareService className={servicesActives["bus"] ? "service-active" : ""} onClick={() => this.activeService("bus")}>
+          <SquareService
+            className={servicesActives.bus ? "service-active" : ""}
+            onClick={() => this.activeService("bus")}
+          >
             <img src="src/static/bus-logo.png" />
             <p>Bus</p>
           </SquareService>
-          <SquareService className={servicesActives["bicing"] ? "service-active" : ""} onClick={() => this.activeService("bicing")}>
+          <SquareService
+            className={servicesActives.bicing ? "service-active" : ""}
+            onClick={() => {
+              this.activeService("bicing");
+              this.props.history.push("/bicing");
+            }}
+          >
             <img src="src/static/bicing-logo.png" />
             <p>Bicing</p>
           </SquareService>
-          <SquareService className={servicesActives["tram"] ? "service-active" : ""} onClick={() => this.activeService("tram")}>
+          <SquareService
+            className={servicesActives.tram ? "service-active" : ""}
+            onClick={() => this.activeService("tram")}
+          >
             <img src="src/static/tram-logo.png" />
             <p>TRAM</p>
           </SquareService>
-          <SquareService className={servicesActives["maps"] ? "service-active" : ""} onClick={() => this.activeService("maps")}>
+          <SquareService
+            className={servicesActives.maps ? "service-active" : ""}
+            onClick={() => this.activeService("maps")}
+          >
             <img src="src/static/mapa-logo.png" />
             <p>Mapes</p>
           </SquareService>
-          <SquareService className={servicesActives["events"] ? "service-active" : ""} onClick={() => this.activeService("events")}>
+          <SquareService
+            className={servicesActives.events ? "service-active" : ""}
+            onClick={() => this.activeService("events")}
+          >
             <img src="src/static/events-logo.png" />
             <p>Events</p>
           </SquareService>
@@ -148,4 +172,4 @@ class SelectService extends React.Component {
   }
 }
 
-export default SelectService;
+export default withRouter(SelectService);
