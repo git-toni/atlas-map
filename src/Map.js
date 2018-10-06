@@ -37,6 +37,7 @@ class MainMap extends React.Component {
       zoom: 11.3,
     });
   }
+
   renderLayersEvent = () => {
     Object.keys(this.props.data.events).map(key => {
       if (key && this.props.data.events[key].area && this.map) {
@@ -45,13 +46,25 @@ class MainMap extends React.Component {
     });
   };
 
+  renderLayerTram = () => {
+    const defaultObj = { type: "Feature" };
+    const { stops } = this.props.data.data.besos;
+    const features = Object.keys(stops).map(obj => ({
+      ...defaultObj,
+      geometry: { type: "Point", coordinates: [stops[obj].stop_lon, stops[obj].stop_lat] },
+      properties: { title: stops[obj].stop_name },
+    }));
+    utils.circle("Tram", features, this.map);
+  };
+
   render() {
     const { servicesActives, toggleServicesActives } = this.props.data;
     return (
       <Container>
-        <MapContainer id="SupaMap" />
+        <MapContainer style={{ width: "100%", height: "100vh" }} id="SupaMap" />
         <PanelContainer>
           {servicesActives.events && this.renderLayersEvent()}
+          {servicesActives.tram && this.renderLayerTram()}
           <SelectService
             servicesActives={servicesActives}
             toggleServicesActives={toggleServicesActives}

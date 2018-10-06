@@ -1,7 +1,7 @@
 import React from "react";
 
 import { firebaseApp } from "../../environments";
-import { ArticleService, EventService } from "../../services";
+import { ArticleService, EventService, DataService } from "../../services";
 
 const initialState = {
   servicesActives: {
@@ -16,6 +16,7 @@ const initialState = {
   },
   articles: {},
   events: {},
+  data: {},
 };
 
 const initialStateFunctions = {
@@ -37,10 +38,12 @@ export class DataStateProvider extends React.Component {
   state = initialState;
   articleService = new ArticleService();
   eventService = new EventService();
+  dataService = new DataService();
 
   componentDidMount() {
     this.initArticles();
     this.initEvents();
+    this.initData();
   }
 
   initArticles = () => {
@@ -52,35 +55,33 @@ export class DataStateProvider extends React.Component {
         },
       }));
     });
-  }
+  };
+
+  initData = () => {
+    this.dataService.getData(data => {
+      this.setState(prevState => ({ data: { ...prevState.data, ...data } }));
+    });
+  };
 
   initEvents = () => {
     this.eventService.getEvents(event => {
-      this.setState(prevState => ({
-        events: {
-          ...prevState.events,
-          ...event,
-        },
-      }));
+      this.setState(prevState => ({ events: { ...prevState.events, ...event } }));
     });
-  }
+  };
 
-  toggleServicesActives = (service) => {
+  toggleServicesActives = service => {
     this.setState(prevState => ({
       servicesActives: {
         ...prevState.servicesActives,
         [service]: !prevState.servicesActives[service],
       },
     }));
-  }
+  };
 
   render() {
     return (
       <DataState.Provider
-        value={{
-          ...this.state,
-          toggleServicesActives: this.toggleServicesActives,
-        }}
+        value={{ ...this.state, toggleServicesActives: this.toggleServicesActives }}
       >
         {this.props.children}
       </DataState.Provider>
