@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Card = styled.article`
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   background: white;
   border-radius: 4px;
@@ -18,7 +18,6 @@ const Card = styled.article`
   }
 
   .content {
-
     h1 {
       padding: 10px 20px 0;
       margin-bottom: 6px;
@@ -38,9 +37,10 @@ const Card = styled.article`
   }
 `;
 
-const ArticleCard = ({ article }) => (
+/*eslint-disable */
+const ArticleCard = ({ article, onClick }) => (
   <Card>
-    <div className="content">
+    <div className="content" onClick={onClick}>
       <img src={article.imageUrl} alt={article.title} />
       <h1>{article.title}</h1>
       <p>{article.description}</p>
