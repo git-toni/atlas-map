@@ -4,7 +4,7 @@ import { FaBars } from "react-icons/fa";
 
 const HeaderContainer = styled.div`
   display: flex;
-  background: #152935;
+  background: #000;
   justify-content: space-between;
   align-items: center;
   height: 100%;
