@@ -37,7 +37,7 @@ import App from "./App";
       padding: 0px;
       box-sizing: border-box;
       font-family: "Arial", sans-serif;
-      color: #152935;
+      color: #000;
       font-size: 16px;
     }
 

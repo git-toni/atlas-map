@@ -24,7 +24,7 @@ const HeaderContainer = styled.div`
   z-index: 99;
 `;
 const SidePanelContainer = styled.div`
-  height: 100%;
+  min-height: 100%;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -32,6 +32,7 @@ const SidePanelContainer = styled.div`
   z-index: 99;
   width: 14em;
   box-shadow: 3px 0px 12px #787878;
+  transition: 0.3s ease-in-out;
 `;
 class App extends React.Component {
   constructor() {
