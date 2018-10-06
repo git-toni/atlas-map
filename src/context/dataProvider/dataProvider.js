@@ -1,7 +1,13 @@
 import React from "react";
 
 import { firebaseApp } from "../../environments";
-import { ArticleService, EventService, DataService } from "../../services";
+import {
+  ArticleService,
+  EventService,
+  DataService,
+  AlertService,
+  AlertConstrunctionService,
+} from "../../services";
 
 const initialState = {
   servicesActives: {
@@ -14,6 +20,8 @@ const initialState = {
     maps: false,
     events: false,
   },
+  alert: false,
+  alertConstruction: false,
   articles: {},
   events: {},
   data: {},
@@ -39,11 +47,15 @@ export class DataStateProvider extends React.Component {
   articleService = new ArticleService();
   eventService = new EventService();
   dataService = new DataService();
+  alertService = new AlertService();
+  alertConstrunctionService = new AlertConstrunctionService();
 
   componentDidMount() {
     this.initArticles();
     this.initEvents();
     this.initData();
+    this.initAlert();
+    this.initAlertConstruction();
   }
 
   initArticles = () => {
@@ -66,6 +78,19 @@ export class DataStateProvider extends React.Component {
   initEvents = () => {
     this.eventService.getEvents(event => {
       this.setState(prevState => ({ events: { ...prevState.events, ...event } }));
+    });
+  };
+
+  initAlert = () => {
+    this.alertService.getData(alert => {
+      this.setState(prevState => ({ alert: { ...prevState.alert, ...alert } }));
+    });
+  };
+  initAlertConstruction = () => {
+    this.alertConstrunctionService.getData(alertConstruction => {
+      this.setState(prevState => ({
+        alertConstruction: { ...prevState.alertConstruction, ...alertConstruction },
+      }));
     });
   };
 
