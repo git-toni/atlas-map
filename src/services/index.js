@@ -1,3 +1,4 @@
 import ArticleService from "./article/article";
+import EventService from "./event/event";
 
-export { ArticleService };
+export { ArticleService, EventService };

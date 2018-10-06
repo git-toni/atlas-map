@@ -1,7 +1,7 @@
 import React from "react";
 
 import { firebaseApp } from "../../environments";
-import { ArticleService } from "../../services";
+import { ArticleService, EventService } from "../../services";
 
 const initialState = {
   servicesActives: {
@@ -36,9 +36,11 @@ export const withData = Component => props => (
 export class DataStateProvider extends React.Component {
   state = initialState;
   articleService = new ArticleService();
+  eventService = new EventService();
 
   componentDidMount() {
     this.initArticles();
+    this.initEvents();
   }
 
   initArticles = () => {
@@ -47,6 +49,17 @@ export class DataStateProvider extends React.Component {
         articles: {
           ...prevState.articles,
           ...article,
+        },
+      }));
+    });
+  }
+
+  initEvents = () => {
+    this.eventService.getEvents(event => {
+      this.setState(prevState => ({
+        events: {
+          ...prevState.events,
+          ...event,
         },
       }));
     });
