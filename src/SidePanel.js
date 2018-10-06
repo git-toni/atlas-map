@@ -39,16 +39,23 @@ const MenuItem = ({ onClick, isSelected, icon, label }) => (
 /* eslint-disable fp/no-mutating-methods */
 /* eslint-disable react/prefer-stateless-function */
 class SidePanel extends React.Component {
+
+  pushNavigation = (path) => {
+    const { history, toggleSidebar } = this.props;
+
+    history.push(path);
+    toggleSidebar();
+  }
+
   render() {
-    const { history } = this.props;
     return (
       <SideContainer>
-        <MenuItem onClick={() => history.push("routes")} icon={<FiNavigation />} label="Rutes" />
-        <MenuItem onClick={() => history.push("map")} isSelected icon={<FiMap />} label="Mapes" />
-        <MenuItem onClick={() => history.push("discover")} icon={<FiStar />} label="Descobrir" />
-        <MenuItem onClick={() => history.push("")} icon={<FiMapPin />} label="Punts d'interès" />
-        <MenuItem onClick={() => history.push("")} icon={<FiInfo />} label="Informació útil" />
-        <MenuItem onClick={() => history.push("/")} icon={<FiSettings />} label="Configuració" />
+        <MenuItem onClick={() => this.pushNavigation("routes")} icon={<FiNavigation />} label="Rutes" />
+        <MenuItem onClick={() => this.pushNavigation("map")} isSelected icon={<FiMap />} label="Mapes" />
+        <MenuItem onClick={() => this.pushNavigation("discover")} icon={<FiStar />} label="Descobrir" />
+        <MenuItem onClick={() => this.pushNavigation("")} icon={<FiMapPin />} label="Punts d'interès" />
+        <MenuItem onClick={() => this.pushNavigation("")} icon={<FiInfo />} label="Informació útil" />
+        <MenuItem onClick={() => this.pushNavigation("/")} icon={<FiSettings />} label="Configuració" />
       </SideContainer>
     );
   }

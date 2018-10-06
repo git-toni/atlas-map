@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 
+import { withData } from "./context";
+
 import SelectService from "./components/SelectService";
 
 // mapboxgl.accessToken =
@@ -50,20 +52,18 @@ class MainMap extends React.Component {
     // });
   }
 
-  activeService = (service) => {
-    console.log("Active service:", service); // context?
-  }
-
   render() {
+    const { servicesActives, toggleServicesActives } = this.props.data;
+
     return (
       <Container>
         <MapContainer id="SupaMap" />
         <PanelContainer>
-          <SelectService activeService={this.activeService}/>
+          <SelectService servicesActives={servicesActives} toggleServicesActives={toggleServicesActives}/>
         </PanelContainer>
       </Container>
     );
   }
 }
 
-export default MainMap;
+export default withData(MainMap);

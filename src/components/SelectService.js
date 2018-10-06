@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FiChevronUp } from "react-icons/fi";
+import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 
 const Wrapper = styled.div`
   svg {
@@ -42,15 +42,20 @@ const SquareService = styled.div`
   align-items: center;
   flex-direction: column;
   height: 90px;
-  width: calc(100% * (1/4) - 10px);
+  width: calc(100% * (1 / 4) - 10px);
   flex-grow: 1;
   margin: 5px;
   background-color: #ffffff;
-  box-shadow: 1px 4px 10px 0px rgba(0,0,0,0.04);
+  box-shadow: 1px 4px 10px 0px rgba(0, 0, 0, 0.04);
+  opacity: 0.5;
 
   img {
     height: 50%;
     margin-bottom: 10px;
+  }
+
+  &.service-active {
+    opacity: 1;
   }
 `;
 
@@ -69,11 +74,11 @@ const WrapperService = styled.div`
 
   @keyframes toggleServices {
     0% {
-     display: flex;
-     opacity: 0;
+      display: flex;
+      opacity: 0;
     }
     100% {
-     opacity: 1;
+      opacity: 0.5;
     }
   }
 `;
@@ -81,60 +86,66 @@ const WrapperService = styled.div`
 class SelectService extends React.Component {
   state = {
     open: false,
-  }
+  };
 
   toggle = () => {
     this.setState(prevState => ({ open: !prevState.open }));
-  }
+  };
 
-  activeService = (service) => {
-    this.props.activeService && this.props.activeService(service);
-  }
+  activeService = service => {
+    this.props.toggleServicesActives && this.props.toggleServicesActives(service);
+  };
 
   render() {
+    const { servicesActives } = this.props;
+
     return (
       <Wrapper>
         <div onClick={this.toggle}>
-          <FiChevronUp />
-          <ToggleButton />   
+          {this.state.open ? (
+            <FiChevronDown />
+          ) : (
+            <FiChevronUp />
+          )}
+          <ToggleButton />
         </div>
         <WrapperService className={this.state.open ? "active" : ""}>
-          <SquareService onClick={() => this.activeService("metro")}>
+          <SquareService className={servicesActives["metro"] ? "service-active" : ""} onClick={() => this.activeService("metro")}>
             <img src="src/static/metro-logo.png" />
             <p>Metro</p>
           </SquareService>
-          <SquareService onClick={() => this.activeService("fgc")}>
+          <SquareService className={servicesActives["fgc"] ? "service-active" : ""} onClick={() => this.activeService("fgc")}>
             <img src="src/static/fgc-logo.png" />
             <p>FGC</p>
           </SquareService>
-          <SquareService onClick={() => this.activeService("rodalies")}>
+          <SquareService className={servicesActives["rodalies"] ? "service-active" : ""} onClick={() => this.activeService("rodalies")}>
             <img src="src/static/renfe-logo.png" />
             <p>Rodalies</p>
           </SquareService>
-          <SquareService onClick={() => this.activeService("bus")}>
+          <SquareService className={servicesActives["bus"] ? "service-active" : ""} onClick={() => this.activeService("bus")}>
             <img src="src/static/bus-logo.png" />
             <p>Bus</p>
           </SquareService>
-          <SquareService onClick={() => this.activeService("bicing")}>
+          <SquareService className={servicesActives["bicing"] ? "service-active" : ""} onClick={() => this.activeService("bicing")}>
             <img src="src/static/bicing-logo.png" />
             <p>Bicing</p>
           </SquareService>
-          <SquareService onClick={() => this.activeService("tram")}>
+          <SquareService className={servicesActives["tram"] ? "service-active" : ""} onClick={() => this.activeService("tram")}>
             <img src="src/static/tram-logo.png" />
             <p>TRAM</p>
           </SquareService>
-          <SquareService onClick={() => this.activeService("maps")}>
+          <SquareService className={servicesActives["maps"] ? "service-active" : ""} onClick={() => this.activeService("maps")}>
             <img src="src/static/mapa-logo.png" />
             <p>Mapes</p>
           </SquareService>
-          <SquareService onClick={() => this.activeService("events")}>
+          <SquareService className={servicesActives["events"] ? "service-active" : ""} onClick={() => this.activeService("events")}>
             <img src="src/static/events-logo.png" />
             <p>Events</p>
           </SquareService>
         </WrapperService>
       </Wrapper>
-    )
+    );
   }
-};
+}
 
 export default SelectService;

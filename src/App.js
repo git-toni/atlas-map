@@ -44,7 +44,7 @@ class App extends React.Component {
     if (sidebarToggled) {
       return (
         <SidePanelContainer isToggled={sidebarToggled}>
-          <SidePanel />
+          <SidePanel toggleSidebar={this.toggleSidebar} />
         </SidePanelContainer>
       );
     }
