@@ -8,7 +8,13 @@ import App from "./App";
 
 (() => {
   const root = document.createElement("div");
+  const script = document.createElement("script");
   root.setAttribute("id", "root");
+  script.setAttribute("type", "text/javascript");
+  script.setAttribute(
+    "src",
+    "https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyC6pQN_jgJGxNqOgGS9lPvDtAr687BcgrY",
+  );
 
   const slickCss = document.createElement("link");
   slickCss.setAttribute("rel", "stylesheet");
@@ -43,6 +49,7 @@ import App from "./App";
   document.head.appendChild(slickCss);
   document.head.appendChild(slickTheme);
   document.body.appendChild(root);
+  document.body.appendChild(script);
 
   const id = document.getElementById("root");
 
