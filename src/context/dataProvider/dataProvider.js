@@ -83,14 +83,13 @@ export class DataStateProvider extends React.Component {
 
   initAlert = () => {
     this.alertService.getData(alert => {
-      this.setState(prevState => ({ alert: { ...prevState.alert, ...alert } }));
+      this.setState(({ alert }));
     });
   };
+
   initAlertConstruction = () => {
     this.alertConstrunctionService.getData(alertConstruction => {
-      this.setState(prevState => ({
-        alertConstruction: { ...prevState.alertConstruction, ...alertConstruction },
-      }));
+      this.setState(({ alertConstruction }));
     });
   };
 
