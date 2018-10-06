@@ -69,17 +69,6 @@ const WrapperService = styled.div`
 
   &.active {
     display: flex;
-    animation: toggleServices 1s;
-  }
-
-  @keyframes toggleServices {
-    0% {
-      display: flex;
-      opacity: 0;
-    }
-    100% {
-      opacity: 0.5;
-    }
   }
 `;
 
